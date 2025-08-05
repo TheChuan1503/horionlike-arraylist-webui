@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horion-Like ArrayList WebUI Sample</title>
+    <style>
+        body {
+            padding: 0%;
+            margin: 0%;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="horionlike-arraylist"></div>
+    <div>
+        <button onclick="hal.enable('X-Ray', null, 'visual')">Enable X-Ray</button>
+        <button onclick="hal.disable('X-Ray')">Disable X-Ray</button>
+        <br>
+        <button onclick="hal.enable('ChestVisuals', null, 'visual')">Enable ChestVisuals</button>
+        <button onclick="hal.disable('ChestVisuals')">Disable ChestVisuals</button>
+        <br>
+        <button onclick="hal.enable('NoFall', null, 'movement')">Enable NoFall</button>
+        <button onclick="hal.disable('NoFall')">Disable NoFall</button>
+        <br>
+        <button onclick="hal.enable('AutoSprint', null, 'movement')">Enable AutoSprint</button>
+        <button onclick="hal.disable('AutoSprint')">Disable AutoSprint</button>
+        <br>
+        <button onclick="hal.enable('NoHurtCam', null, 'visual')">Enable NoHurtCam</button>
+        <button onclick="hal.disable('NoHurtCam')">Disable NoHurtCam</button>
+        <br>
+        <button onclick="hal.enable('Speed', null, 'movement')">Enable Speed</button>
+        <button onclick="hal.disable('Speed')">Disable Speed</button>
+        <br>
+        <button onclick="hal.enable('Scaffold', null, 'world')">Enable Scaffold</button>
+        <button onclick="hal.disable('Scaffold')">Disable Scaffold</button>
+        <br>
+        <button onclick="hal.enable('Fly', null, 'movement')">Enable Fly</button>
+        <button onclick="hal.disable('Fly')">Disable Fly</button>
+        <br>
+        <button onclick="hal.enable('NoClip', null, 'movement')">Enable NoClip</button>
+        <button onclick="hal.disable('NoClip')">Disable NoClip</button>
+        <br>
+        <button onclick="hal.enable('NoSlowDown', null, 'movement')">Enable NoSlowDown</button>
+        <button onclick="hal.disable('NoSlowDown')">Disable NoSlowDown</button>
+        <br>
+        <button onclick="hal.enable('Glide', null, 'movement')">Enable Glide</button>
+        <button onclick="hal.disable('Glide')">Disable Glide</button>
+        <br>
+        <button onclick="hal.enable('JetPack', null, 'movement')">Enable JetPack</button>
+        <button onclick="hal.disable('JetPack')">Disable JetPack</button>
+        <br>
+        <button onclick="hal.enable('Tracer', null,'visual')">Enable Tracer</button>
+        <button onclick="hal.disable('Tracer')">Disable Tracer</button>
+        <br>
+        <button onclick="hal.enable('AntiBot', null, 'player')">Enable AntiBot</button>
+        <button onclick="hal.disable('AntiBot')">Disable AntiBot</button>
+        <br>
+        <button onclick="hal.enable('AimBot', null,'combat')">Enable AimBot</button>
+        <button onclick="hal.disable('AimBot')">Disable AimBot</button>
+        <br>
+        <button onclick="hal.enable('KillAura', null,'combat')">Enable KillAura</button>
+        <button onclick="hal.disable('KillAura')">Disable KillAura</button>
+        <br>
+        
+        <hr>
+        <button onclick="hal.show()">Show</button>
+        <button onclick="hal.hide()">Hide</button>
+
+        <hr>
+        <button onclick="hal.color = 'rainbow'">Rainbow</button>
+        <button onclick="hal.color = 'categorized'">Categorized</button>
+        <button onclick="hal.color = '#FFF'">White</button>
+        <button onclick="hal.color = '#000'">Black</button>
+        <button onclick="hal.color = '#FF0000'">Red</button>
+        <button onclick="hal.color = '#00FF00'">Green</button>
+        <button onclick="hal.color = '#0000FF'">Blue</button>
+
+        <hr>
+        <button onclick="hal.font = ''">Default Font</button>
+        <button onclick="hal.font = 'Consolas'">Consolas</button>
+        <button onclick="hal.font = 'monospace'">Monospace</button>
+        <button onclick="hal.font = 'Minecraft'">Minecraft</button>
+
+        <hr>
+        <input type="checkbox" onchange="hal.bottom = this.checked">Bottom<br>
+    </div>
+    <script src="./script.js"></script>
+    <script>
+        const hal = new HorionLikeArrayList('.horionlike-arraylist')
+        hal.enable('ChestVisuals', null,'visual')
+        hal.enable('NoFall', null, 'movement')
+        hal.enable('AutoSprint', null, 'movement')
+
+        hal.rainbow_flow_speed = 3
+        hal.font = ''
+        hal.show()
+    </script>
+</body>
+</html>

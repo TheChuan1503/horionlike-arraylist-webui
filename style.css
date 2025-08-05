@@ -1,0 +1,80 @@
+.horionlike-arraylist-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-family: inherit;
+    pointer-events: none;
+    overflow: hidden;
+    display: none;
+    z-index: 9999;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.horionlike-arraylist-container.bottom {
+    top: auto;
+    bottom: 0;
+}
+
+.horionlike-arraylist-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.horionlike-arraylist-item {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    width: 100%;
+    position: relative;
+}
+
+.horionlike-arraylist-item.horionlike-arraylist-new {
+    animation: slideIn 0.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.horionlike-arraylist-item.horionlike-arraylist-removing {
+    animation: slideOut 0.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.horionlike-arraylist-line {
+    flex-shrink: 0;
+    width: 3px;
+}
+
+.horionlike-arraylist-text {
+    text-align: right;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 3px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-shadow: 1px 1px #000000;
+}
