@@ -20,6 +20,7 @@ class HorionLikeArrayList {
             combat: '#E53333'
         };
         this._color = options.color || 'rainbow';
+        this._slideAnimDisabled = options.slideAnimDisabled || false;
 
         this.container = document.createElement('div');
         this.container.className = 'horionlike-arraylist-container';
@@ -235,15 +236,20 @@ class HorionLikeArrayList {
             this.features[featureIndex].enabled = false;
             const itemToDisable = this.listContainer.querySelector(`.horionlike-arraylist-item[data-name="${featureName}"]`);
             if (itemToDisable) {
-                this.animatingItems.add(itemToDisable);
-                itemToDisable.classList.add('horionlike-arraylist-removing');
-                setTimeout(() => {
-                    if (itemToDisable.parentNode === this.listContainer) {
-                        this.listContainer.removeChild(itemToDisable);
-                    }
-                    this.animatingItems.delete(itemToDisable);
+                if (this._slideAnimDisabled) {
+                    this.listContainer.removeChild(itemToDisable);
                     this.updateListOrder();
-                }, 200);
+                } else {
+                    this.animatingItems.add(itemToDisable);
+                    itemToDisable.classList.add('horionlike-arraylist-removing');
+                    setTimeout(() => {
+                        if (itemToDisable.parentNode === this.listContainer) {
+                            this.listContainer.removeChild(itemToDisable);
+                        }
+                        this.animatingItems.delete(itemToDisable);
+                        this.updateListOrder();
+                    }, 200);
+                }
             }
         }
     }
@@ -276,7 +282,7 @@ class HorionLikeArrayList {
                 newItemsOrder.push(existingItem);
             } else {
                 const item = document.createElement('div');
-                item.className = 'horionlike-arraylist-item horionlike-arraylist-new';
+                item.className = this._slideAnimDisabled ? 'horionlike-arraylist-item' : 'horionlike-arraylist-item horionlike-arraylist-new';
                 item.dataset.name = feature.name;
                 const line = document.createElement('div');
                 line.className = 'horionlike-arraylist-line';
@@ -288,11 +294,13 @@ class HorionLikeArrayList {
                 item.appendChild(line);
                 item.appendChild(text);
                 newItemsOrder.push(item);
-                this.animatingItems.add(item);
-                setTimeout(() => {
-                    item.classList.remove('horionlike-arraylist-new');
-                    this.animatingItems.delete(item);
-                }, 200);
+                if (!this._slideAnimDisabled) {
+                    this.animatingItems.add(item);
+                    setTimeout(() => {
+                        item.classList.remove('horionlike-arraylist-new');
+                        this.animatingItems.delete(item);
+                    }, 200);
+                }
             }
         });
         this.listContainer.innerHTML = '';
